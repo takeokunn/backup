@@ -199,7 +199,7 @@ class MysqlRestore extends Command
     {
         $path = $this->cleanPath($path);
 
-        return Storage::disk(is_null($disk) ? $this->getDisk() : $disk)->getAdapter()->getPathPrefix().$path.DIRECTORY_SEPARATOR.$filename;
+        return Storage::disk(is_null($disk) ? $this->getDisk() : $disk)->path($path.DIRECTORY_SEPARATOR.$filename);
     }
 
     protected function cleanPath($path)
