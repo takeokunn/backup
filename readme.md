@@ -2,9 +2,9 @@
 
 Backup is a Laravel package that allow the creation and restoration of database backups in an easy way.
 
-> New version 4.* works with laravel 8
+> Supports Laravel 10.x, 11.x, and 12.x with PHP 8.2+
 
-[![Latest Stable Version](https://poser.pugx.org/paulvl/backup/v/stable)](https://packagist.org/packages/paulvl/backup)  [![Latest Unstable Version](https://poser.pugx.org/paulvl/backup/v/unstable)](https://packagist.org/packages/paulvl/backup)  [![License](https://poser.pugx.org/paulvl/backup/license)](https://packagist.org/packages/paulvl/backup)  [![Total Downloads](https://poser.pugx.org/paulvl/backup/downloads)](https://packagist.org/packages/paulvl/backup)
+[![Latest Stable Version](https://poser.pugx.org/takeokunn/backup/v/stable)](https://packagist.org/packages/takeokunn/backup)  [![Latest Unstable Version](https://poser.pugx.org/takeokunn/backup/v/unstable)](https://packagist.org/packages/takeokunn/backup)  [![License](https://poser.pugx.org/takeokunn/backup/license)](https://packagist.org/packages/takeokunn/backup)  [![Total Downloads](https://poser.pugx.org/takeokunn/backup/downloads)](https://packagist.org/packages/takeokunn/backup)
 
 ## **Quick Installation**
 
@@ -13,14 +13,14 @@ Begin by installing this package through Composer.
 You can run:
 
 ```
-composer require paulvl/backup 4.*
+composer require takeokunn/backup
 ```
 
-Or edit your project's composer.json file to require paulvl/backup.
+Or edit your project's composer.json file to require takeokunn/backup.
 
 ```
     "require": {
-        "paulvl/backup": "4.*"
+        "takeokunn/backup": "dev-master"
     }
 ```
 
@@ -77,7 +77,7 @@ php artisan backup:mysql-dump --connection=custom-connection
 ```
 
 #### **--compress**  - Enable file compression
-> From versión *4.** compress option use *gzenconde*. To have your previous compressed files working with this versión see [fix-file](#fix-file----fix-backup-file-encoding-mode) command
+> The compress option uses *gzenconde*. If you have compressed files from older versions, see [fix-file](#fix-file----fix-backup-file-encoding-mode) command
 
 Enable file compression regardless if is disabled in the configuration file. This option will always overwrite  `--no-compress`  option
 
@@ -94,7 +94,7 @@ php artisan backup:mysql-dump --no-compress
 ```
 
 ### **mysql-restore**  - Restoring database from a file
-> From versión *4.** compress option use *gzenconde*. To have your previous compressed files working with this versión see [fix-file](#fix-file----fix-backup-file-encoding-mode) command
+> The compress option uses *gzenconde*. If you have compressed files from older versions, see [fix-file](#fix-file----fix-backup-file-encoding-mode) command
 
 To restore a backup to your current aplication's database you have to run:
 
@@ -146,7 +146,7 @@ php artisan backup:mysql-restore --yes
 
 ### **fix-file**  - Fix backup file encoding mode
 
-> Prior to version *4.** all backup files generated with compression option where compressed using *gzenconde*, by this the generated file was unable to use with any other uncompression software. Thats why we now use *gzencode* instead which is friendly to external software.
+> In older versions, backup files generated with compression were compressed using a format that was not compatible with other uncompression software. We now use *gzencode* which is friendly to external software.
 
 To fix the encoding mode of a compressed backup file you have to run:
 
